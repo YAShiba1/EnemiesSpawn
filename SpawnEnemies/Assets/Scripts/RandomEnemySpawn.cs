@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class RandomEnemySpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemy;
+    [SerializeField] private Enemy _enemy;
     [SerializeField] private Transform _point;
 
     private Transform[] _points;
     private int _currentPoint;
 
-    void Start()
+    private void Start()
     {
         _points = new Transform[_point.childCount];
 
@@ -32,8 +32,6 @@ public class RandomEnemySpawn : MonoBehaviour
             Instantiate(_enemy, _points[_currentPoint].position, Quaternion.identity);
 
             _currentPoint++;
-
-            Debug.Log(Time.time + " Enemy spawn.");
 
             if (_currentPoint >= _points.Length)
             {
